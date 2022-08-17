@@ -2,3 +2,10 @@
     margin: 0;
     box-sizing: border-box;
 }
+/* Header Styling Begin*/
+header {
+    background-color: azure;
+    text-align: center;
+}
+
+/*Header Styling End
