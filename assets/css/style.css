@@ -16,6 +16,11 @@ header h1 {
 }
 
 /*Header Styling End
+/* Timer Styling */
+.timer {
+    margin: 5px;
+    font-size: 36px;
+}
 /* Footer Styling */
 
 /* Footer Styling End */
