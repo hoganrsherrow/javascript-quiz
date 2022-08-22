@@ -1,11 +1,18 @@
+/* Body Styling */
 * {
     margin: 0;
     box-sizing: border-box;
 }
-/* Header Styling Begin*/
-header {
+body {
     background-color: azure;
+}
+/* Body Styling End
+/* Header Styling */
+header {
     text-align: center;
+}
+header h1 {
+    font-size: 48px;
 }
 
 /*Header Styling End
