@@ -1,31 +1,32 @@
 // Score reset
 var score = 0;
+// Time reset
+var time = 300
 // Grab the Start Quiz button by id
 var startQuizButton = document.getElementById("start-quiz");
 // Grab div to hold quiz information
 var quizHolder = document.getElementById("questions");
 // start quiz event listener
 function startQuiz() {
+    addTimerEl();
+    var timerEl = document.getElementById("timer");
+    var timerHolder = document.getElementById("timer-holder");
     
+    setInterval(updateTimer, 1000);
 }
 // Create timer
 function addTimerEl() {
     var timerEl = document.createElement("div");
-    timerEl.classList.add("timer");
+    timerEl.id = "timer-holder";
     quizHolder.appendChild(timerEl);
-
-
-    setInterval(updateTimer, 1000)
 }
 // update timer
 function updateTimer() {
-    var time = 300;
+    var timer = document.getElementById("timer-holder");
     var minutes = Math.floor(time / 60);
     let seconds = time % 60;
-    let timerEl = document.getElementsByClassName("timer");
-
     seconds = seconds < 10 ? '0' + seconds : seconds;
-    timerEl.innerHTML = `${minutes}:${seconds}`;
+    timer.innerHTML = `<p class='timer' id='timer'>${minutes}:${seconds}</p>`;
     time--;
 }
 // This array will hold the questions and answers
@@ -48,6 +49,7 @@ questions = [
     }
 
 ]
-startQuizButton.addEventListener("click", addTimerEl);
+startQuizButton.onclick = startQuiz;
+// checks if timer element exists. If so, update timer.
 
 console.log(startQuizButton.textContent);

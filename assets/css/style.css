@@ -16,11 +16,26 @@ header h1 {
 }
 
 /*Header Styling End
+/* Quiz Styling */
+.questions {
+    height: 35px;
+    width: 50px;
+    background-color: bisque;
+}
+
+/* Quiz Styling End */
 /* Timer Styling */
 .timer {
     margin: 5px;
     font-size: 36px;
 }
 /* Footer Styling */
-
+footer a {
+    color: orangered;
+    text-decoration: none;
+}
+footer a:hover {
+    font-style: italic;
+    font-size: 1.3em;
+}
 /* Footer Styling End */
