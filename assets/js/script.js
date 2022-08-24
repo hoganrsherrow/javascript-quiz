@@ -6,27 +6,40 @@ var time = 300
 var startQuizButton = document.getElementById("start-quiz");
 // Grab div to hold quiz information
 var quizHolder = document.getElementById("questions");
-// start quiz event listener
+// number tracker
+var numOfQuestions = 0;
+// start quiz function
 function startQuiz() {
     addTimerEl();
     setInterval(updateTimer, 1000);
-    createQuestionEl();
     var btnContainer = document.getElementById("btn-container");
     btnContainer.removeChild(startQuizButton);
-    // validate answer
-    var userAnswer = document.getElementById("user-answer");
-    var answerBtn = document.getElementById("answer-btn");
-    answerBtn.onclick = () => {
-        if(userAnswer.value === questions[0].answer) {
-            alert("Your answer is correct!");
+    for (let i = 0; i < questions.length; i++) {
+        if (time > 0) {
+            createQuestionEl();
+            // validate answer
+            var userAnswer = document.getElementById("user-answer");
+            var answerBtn = document.getElementById("answer-btn");
+            answerBtn.onclick = () => {
+                if (userAnswer.value === questions[numOfQuestions].answer) {
+                    score += 10;
+                    alert("Your answer is correct! Your score is now " + score);
+                } else {
+                    alert("Your answer is incorrect");
+                }
+                console.log("I was clicked");
+                console.log(userAnswer.value);
+                console.log(questions[numOfQuestions].answer);
+                numOfQuestions++;
+            }
+
         } else {
-            alert("Your answer is incorrect");
+            alert("Time is out");
         }
-        console.log("I was clicked");
-        console.log(userAnswer.value);
+
     }
-    
-}
+
+};
 // Create timer
 function addTimerEl() {
     var timerEl = document.createElement("div");
@@ -43,8 +56,7 @@ function updateTimer() {
     time--;
 }
 // This array will hold the questions and answers
-questions = [
-    {
+questions = [{
         question: "Is Javasript a coding language?",
         answer: "yes"
     },
@@ -66,7 +78,7 @@ questions = [
 function createQuestionEl() {
     var questionEl = document.createElement("div");
     questionEl.id = "quiz-question";
-    questionEl.textContent = questions[0].question;
+    questionEl.textContent = questions[numOfQuestions].question;
     quizHolder.appendChild(questionEl);
     createAnswerFormEl();
 }
@@ -77,4 +89,9 @@ function createAnswerFormEl() {
     answerFormEl.innerHTML = `<input type="text" id="user-answer" name="user-answer" placeholder="Your Answer"><button type="button" id="answer-btn">Submit Answer</button>`;
     quizHolder.appendChild(answerFormEl);
 }
+function endQuiz() {
+    // Clear contents and display score, offer iniials and high score save
+}
 startQuizButton.onclick = startQuiz;
+
+// Use buttons to launch next question instead of loop. Use another set Interval function to invoke endQuiz().
