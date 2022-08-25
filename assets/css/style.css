@@ -1,27 +1,36 @@
-/* Body Styling */
+/* CSS Variables */
+:root {
+    --primary-color: #234a56;
+    --secondary-color: #417d95;
+    --tertiary-color: #dde7dc;
+}
+/* CSS Variables End */
+/* Utility Classes */
+.btn {
+
+}
+/* Utility Classes End */
+/* General Styling */
 * {
     margin: 0;
     box-sizing: border-box;
 }
 body {
     background-color: azure;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/* Body Styling End
+/* General End */
 /* Header Styling */
 header {
     text-align: center;
 }
 header h1 {
+    color: var(--primary-color);
     font-size: 48px;
 }
 
 /*Header Styling End
 /* Quiz Styling */
-.questions {
-    height: 35px;
-    width: 50px;
-    background-color: bisque;
-}
 
 /* Quiz Styling End */
 /* Timer Styling */
