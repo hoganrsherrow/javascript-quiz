@@ -4,7 +4,12 @@
     --secondary-color: #417d95;
     --tertiary-color: #dde7dc;
 }
+/* CSS Variables End */
+/* Utility Classes */
+.btn {
 
+}
+/* Utility Classes End */
 /* General Styling */
 * {
     margin: 0;

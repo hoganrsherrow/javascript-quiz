@@ -8,6 +8,8 @@ var startQuizButton = document.getElementById("start-quiz");
 var quizHolder = document.getElementById("questions");
 // number tracker
 var i = 0;
+// view high scores
+var highScoreCheckerEl =  document.getElementById("high-scores");
 // start quiz function
 function startQuiz() {
     addTimerEl();
@@ -78,7 +80,7 @@ function createQuestionEl() {
 function createAnswerFormEl() {
     var answerFormEl = document.createElement("div");
     answerFormEl.classList = "answer-form";
-    answerFormEl.innerHTML = `<input type="text" id="user-answer" name="user-answer" placeholder="Your Answer"><button type="button" id="answer-btn">Submit Answer</button>`;
+    answerFormEl.innerHTML = `<input type="text" id="user-answer" name="user-answer" placeholder="Your Answer"><button type="button" id="answer-btn" class="btn">Submit Answer</button>`;
     quizHolder.appendChild(answerFormEl);
 }
 
@@ -86,6 +88,7 @@ function endQuiz() {
     // Clear contents and display score, offer iniials and high score save
     quizHolder.innerHTML = "";
     console.log("Your quiz has ended");
+    checkHighScore();
 }
 // answer validation and next question population
 function answerValidation() {
@@ -112,7 +115,46 @@ function answerValidation() {
         endQuiz();
     }
 }
+
+function checkHighScore() {
+    if (localStorage.highScore) {
+        if (score > localStorage.highScore) {
+            setHighScore();
+        }
+    } else {
+        setHighScore();
+    }
+}
+
+function setHighScore() {
+    var mainEl = document.getElementById("main");
+    var initialsEl = document.createElement("div");
+    initialsEl.id = "initials-container";
+    initialsEl.innerHTML = `<input type="text" id="initials-input" class="input" placeholder="Your Initials"><button type="button" id="initials-btn" class="btn">Submit Initials</button>`;
+    mainEl.appendChild(initialsEl);
+    var initialsBtn = document.getElementById("initials-btn");
+    var initialsInput = document.getElementById("initials-input");
+    initialsBtn.onClick = () => {
+        console.log("The initials button was clicked");
+        var initials = initialsInput.value;
+        localStorage.setItem("initials", `${initials}`);
+        localStorage.setItem("highScore", `${score}`);
+        console.log(localStorage.getItem("highScore"));
+        initialsEl.innerHTML = `<p>Thanks for playing!</p>`;
+    };
+}
+function viewHighScores() {
+    var highScoreInitials = localStorage.getItem("initials");
+    var highScore = localStorage.getItem("highScore");
+    var highScoresContainer = document.getElementById("high-scores");
+    var highScoreDisplay = document.createElement("div");
+    highScoreDisplay.id = "high-score-display";
+    highScoreDisplay.innerHTML = `<div>${highScoreInitials}</div><div>${highScore}</div>`;
+
+    highScoresContainer.appendChild(highScoreDisplay);
+}
 startQuizButton.onclick = startQuiz;
+highScoreCheckerEl.addEventListener("click", viewHighScores);
 
 // Use buttons to launch next question instead of loop. Use another set Interval function to invoke endQuiz().
 // Alternatively, use if statement in updateTimer() function to call
