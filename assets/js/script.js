@@ -87,14 +87,14 @@ function createAnswerFormEl() {
 
 function endQuiz() {
     // Clear contents and display score, offer iniials and high score save
-    quizHolder.innerHTML = "";
+    quizHolder.innerHTML = `<p>Your quiz has ended. Your score is ${score}.`;
     console.log("Your quiz has ended");
     checkHighScore();
 }
 // answer validation and next question population
 function answerValidation() {
     var userAnswer = document.getElementById("user-answer");
-    if (userAnswer.value === questions[i].answer) {
+    if (userAnswer.value.toLowerCase() === questions[i].answer.toLowerCase()) {
         score += 10;
         alert("Your answer is correct! Your score is now " + score);
     } else {
