@@ -135,16 +135,21 @@ function setHighScore() {
     mainEl.appendChild(initialsEl);
     var initialsBtn = document.getElementById("initials-btn");
     var initialsInput = document.getElementById("initials-input");
-    initialsBtn.onClick = () => {
+    // initialsBtn.onClick = () => {
+    //     console.log("The initials button was clicked");
+    //     var initials = initialsInput.value;
+    //     localStorage.setItem("initials", `${initials}`);
+    //     localStorage.setItem("highScore", `${score}`);
+    //     console.log(localStorage.getItem("highScore"));
+    //     initialsEl.innerHTML = `<p>Thanks for playing!</p>`;
+    // };
+    initialsBtn.addEventListener("click", () => {
         console.log("The initials button was clicked");
         var initials = initialsInput.value;
         localStorage.setItem("initials", `${initials}`);
         localStorage.setItem("highScore", `${score}`);
         console.log(localStorage.getItem("highScore"));
         initialsEl.innerHTML = `<p>Thanks for playing!</p>`;
-    };
-    initialsBtn.addEventListener("click", () => {
-        console.log("The initials button was clicked");
     });
 }
 function viewHighScores() {
