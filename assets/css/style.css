@@ -7,7 +7,17 @@
 /* CSS Variables End */
 /* Utility Classes */
 .btn {
-
+    color: var(--primary-color);
+    background-color: var(--tertiary-color);
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.btn:hover {
+    opacity: 0.5;
+}
+#start-quiz {
+    width: 400px;
+    height: 100px;
 }
 /* Utility Classes End */
 /* General Styling */
@@ -17,7 +27,14 @@
 }
 body {
     background-color: azure;
+    color: var(--primary-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 /* General End */
 /* Header Styling */
@@ -29,7 +46,30 @@ header h1 {
     font-size: 48px;
 }
 
-/*Header Styling End
+/*Header Styling End */
+#high-scores {
+    flex-basis: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin: 15px;
+}
+#high-scores:active {
+    color: var(--tertiary-color);
+    font-style: italic;
+}
+#high-scores:hover {
+    font-style: italic;
+}
+#high-score-display {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+/* High Scores Styling */
+
+/* High Scores End */
 /* Quiz Styling */
 
 /* Quiz Styling End */
@@ -38,7 +78,16 @@ header h1 {
     margin: 5px;
     font-size: 36px;
 }
+#timer-holder {
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+}
 /* Footer Styling */
+footer {
+    display: flex;
+    justify-content: center;
+}
 footer a {
     color: orangered;
     text-decoration: none;
