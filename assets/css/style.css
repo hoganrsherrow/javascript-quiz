@@ -9,13 +9,15 @@
 .btn {
     color: var(--primary-color);
     background-color: var(--tertiary-color);
-    border-radius: 3px;
+    border: 3px solid var(--secondary-color);
+    border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .btn:hover {
     opacity: 0.5;
 }
 #start-quiz {
+    font-size: 25px;
     width: 400px;
     height: 100px;
 }
@@ -45,8 +47,8 @@ header h1 {
     color: var(--primary-color);
     font-size: 48px;
 }
-
 /*Header Styling End */
+/* High Scores Styling */
 #high-scores {
     flex-basis: 100%;
     flex-grow: 1;
@@ -67,11 +69,31 @@ header h1 {
     flex-wrap: wrap;
     flex-direction: column;
 }
-/* High Scores Styling */
-
 /* High Scores End */
 /* Quiz Styling */
-
+.questions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 15px;
+}
+#quiz-question {
+    flex-basis: 100%;
+    padding: 5px;
+    border-bottom: 3px solid var(--secondary-color);
+    background-color: var(--tertiary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+.answer-form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+.answer-form > input {
+    border-radius: 10px;
+}
 /* Quiz Styling End */
 /* Timer Styling */
 .timer {
@@ -87,6 +109,7 @@ header h1 {
 footer {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 footer a {
     color: orangered;
