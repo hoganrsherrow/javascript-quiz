@@ -25,9 +25,10 @@ function startQuiz() {
 // Create timer
 function addTimerEl() {
     var timerEl = document.createElement("div");
-    var highScoresEl = document.getElementById("high-scores")
+    var highScoresEl = document.getElementById("high-scores");
+    var btnContainer = document.getElementById("btn-container");
     timerEl.id = "timer-holder";
-    highScoresEl.appendChild(timerEl);
+    highScoresEl.after(timerEl);
 }
 // update timer
 function updateTimer() {
@@ -142,6 +143,9 @@ function setHighScore() {
         console.log(localStorage.getItem("highScore"));
         initialsEl.innerHTML = `<p>Thanks for playing!</p>`;
     };
+    initialsBtn.addEventListener("click", () => {
+        console.log("The initials button was clicked");
+    });
 }
 function viewHighScores() {
     var highScoreInitials = localStorage.getItem("initials");
@@ -149,7 +153,7 @@ function viewHighScores() {
     var highScoresContainer = document.getElementById("high-scores");
     var highScoreDisplay = document.createElement("div");
     highScoreDisplay.id = "high-score-display";
-    highScoreDisplay.innerHTML = `<div>${highScoreInitials}</div><div>${highScore}</div>`;
+    highScoreDisplay.innerHTML = `<div>Initials: ${highScoreInitials}</div><div>High Score: ${highScore}</div>`;
 
     highScoresContainer.appendChild(highScoreDisplay);
 }
